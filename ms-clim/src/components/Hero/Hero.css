@@ -1,0 +1,130 @@
+/* Hero  */
+
+/*
+  Le header fixe fait : topbar (36px) + navbar (~68px) = 104px.
+  margin-top pousse la section ENTIÈRE (fond compris) sous le header.
+  min-height: calc(100vh - 104px) pour que le hero remplisse quand même
+  tout le reste de l'écran visible.
+*/
+:root {
+  --header-h: 104px;
+}
+
+.hero {
+  position: relative;
+  margin-top: var(--header-h);
+  min-height: calc(100vh - var(--header-h));
+
+  background-image: url("/Home-page-img.jpeg");
+  background-size: cover;
+  background-position: center right;
+  background-repeat: no-repeat;
+
+  display: flex;
+  align-items: center;
+  padding-top: 60px;
+  padding-bottom: 80px;
+}
+
+/*
+  ::before est un pseudo-élément — une "couche" invisible posée par-dessus l'image.
+  On y met le dégradé ici plutôt qu'en inline style pour pouvoir le modifier
+  avec des media queries selon l'écran.
+*/
+.hero::before {
+  content: ""; /* obligatoire pour que le pseudo-élément existe */
+  position: absolute;
+  inset: 0; /* raccourci pour top/right/bottom/left: 0 */
+
+  /* Desktop : fondu gauche (sombre) → droite (transparent = image visible) */
+  background: linear-gradient(to right, var(--bg-dark) 10%, rgba(15, 40, 62, 0.6) 60%, transparent 90%);
+}
+
+/* Le contenu doit passer AU-DESSUS du pseudo-élément */
+.hero__inner {
+  position: relative;
+  z-index: 1;
+}
+
+.hero__content {
+  max-width: 540px;
+}
+
+/* ── Étiquette ── */
+.hero__label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--orange);
+  letter-spacing: 0.05em;
+  margin-bottom: 20px;
+}
+
+.hero__label-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--orange);
+  flex-shrink: 0;
+}
+
+/* ── Titre ── */
+.hero__title {
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+/* ── Description ── */
+.hero__desc {
+  font-size: 1.05rem;
+  color: var(--text-light-muted);
+  line-height: 1.7;
+  margin-bottom: 36px;
+  max-width: 460px;
+}
+
+/* ── Boutons ── */
+.hero__ctas {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .hero {
+    background-position: center center;
+  }
+
+  /*
+    Mobile : overlay uniforme sombre (pas de fondu gauche/droite).
+    Le texte reste lisible quelle que soit la partie de l'image visible.
+  */
+  .hero::before {
+    background: linear-gradient(to bottom, rgba(15, 40, 62, 0.88) 0%, rgba(15, 40, 62, 0.75) 100%);
+  }
+
+  .hero__title {
+    font-size: 2rem;
+  }
+
+  .hero__ctas {
+    flex-direction: column;
+  }
+
+  .hero__ctas .btn {
+    text-align: center;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero__content {
+    max-width: 100%;
+  }
+}

@@ -1,0 +1,204 @@
+/* ─── Footer ─────────────────────────────────────────────────────────────── */
+.footer {
+  background: var(--bg-dark);
+  color: var(--text-light-muted);
+}
+
+/*Grille  de 4 colonnes*/
+.footer__grille {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.4fr;
+  gap: 48px;
+  padding-top: 72px;
+  padding-bottom: 56px;
+  border-bottom: 1px solid var(--border-dark);
+}
+
+/*Logo et la marque*/
+.footer__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.footer__logo img {
+  height: 40px;
+  width: auto;
+}
+
+.footer__brand {
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--text-light);
+}
+
+.footer__desc {
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: var(--text-light-muted);
+  margin-bottom: 20px;
+  max-width: 280px;
+}
+
+/* ── Icônes réseaux sociaux ── */
+.footer__socials {
+  display: flex;
+  gap: 10px;
+}
+
+.footer__social {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--border-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-light-muted);
+  transition: all 0.2s;
+}
+.footer__social:hover {
+  border-color: var(--orange);
+  color: var(--orange);
+  transform: translateY(-2px);
+}
+
+/* ── Titres de colonnes ── */
+.footer__titre {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 20px;
+}
+
+/* ── Listes ── */
+.footer__liste {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer__lien {
+  font-size: 0.88rem;
+  color: var(--text-light-muted);
+  transition: color 0.2s;
+}
+.footer__lien:hover {
+  color: var(--orange);
+}
+
+/* Entrées non-cliquables (services) */
+.footer__lien--static {
+  cursor: default;
+}
+.footer__lien--static:hover {
+  color: var(--text-light-muted);
+}
+
+/* ── Colonne contact ── */
+.footer__contact-liste {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.footer__contact-liste li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.88rem;
+  color: var(--text-light-muted);
+}
+
+/* Icône alignée avec la première ligne de texte */
+.footer__contact-liste li svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--orange);
+}
+
+/* ── Barre du bas ── */
+.footer__bas {
+  background: var(--bg-dark-2);
+  padding: 18px 0;
+}
+
+.footer__bas-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 0.82rem;
+  color: var(--text-light-muted);
+}
+
+/* Ligne 1 : copyright à gauche, liens à droite */
+.footer__bas-inner > span:first-child,
+.footer__mentions {
+  display: flex;
+  align-items: center;
+}
+
+.footer__bas-inner > span:first-child {
+  /* copyright — reste sur la même ligne que les mentions */
+  flex: 1;
+}
+
+/* Ligne du bas : copyright + mentions sur la même rangée */
+.footer__bas-inner {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+/* Mentions légales (SIRET, NAF, décennale) sur leur propre ligne */
+.footer__legal {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.3);
+  padding-top: 10px;
+  border-top: 1px solid var(--border-dark);
+}
+
+.footer__legal-sep {
+  width: 1px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.15);
+  flex-shrink: 0;
+}
+
+.footer__mentions {
+  display: flex;
+  gap: 24px;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .footer__grille {
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+  }
+
+  .footer__col--marque {
+    grid-column: 1 / -1; /* prend toute la largeur */
+  }
+}
+
+@media (max-width: 560px) {
+  .footer__grille {
+    grid-template-columns: 1fr;
+  }
+
+  .footer__bas-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
