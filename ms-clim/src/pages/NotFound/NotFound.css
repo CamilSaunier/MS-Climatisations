@@ -1,0 +1,246 @@
+/* ── Page 404 ─────────────────────────────────────────────────────────────── */
+
+.nf {
+  position: relative;
+  min-height: 100vh;
+  background: linear-gradient(160deg, #e8f4fb 0%, #f5f7fa 50%, #eef2f7 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 24px;
+}
+
+/* ── Flocons d'ambiance ────────────────────────────────────────────────────── */
+
+.nf__flocons {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.nf__flocon {
+  position: absolute;
+  color: rgba(24, 144, 208, 0.18);
+  animation: flocon-chute linear infinite;
+}
+
+/* Placement & taille variés via nth-child */
+.nf__flocon:nth-child(1)  { left:  5%; top: -60px; font-size: 2rem !important;  animation-duration: 12s; animation-delay: 0s; }
+.nf__flocon:nth-child(2)  { left: 15%; top: -60px; font-size: 1.2rem !important; animation-duration: 9s;  animation-delay: 1s; }
+.nf__flocon:nth-child(3)  { left: 25%; top: -60px; font-size: 1.8rem !important; animation-duration: 14s; animation-delay: 3s; }
+.nf__flocon:nth-child(4)  { left: 38%; top: -60px; font-size: 1rem !important;  animation-duration: 8s;  animation-delay: 0.5s; }
+.nf__flocon:nth-child(5)  { left: 50%; top: -60px; font-size: 2.4rem !important; animation-duration: 11s; animation-delay: 2s; }
+.nf__flocon:nth-child(6)  { left: 62%; top: -60px; font-size: 1.5rem !important; animation-duration: 10s; animation-delay: 4s; }
+.nf__flocon:nth-child(7)  { left: 72%; top: -60px; font-size: 2rem !important;  animation-duration: 13s; animation-delay: 1.5s; }
+.nf__flocon:nth-child(8)  { left: 80%; top: -60px; font-size: 1rem !important;  animation-duration: 7s;  animation-delay: 0.8s; }
+.nf__flocon:nth-child(9)  { left: 88%; top: -60px; font-size: 1.6rem !important; animation-duration: 16s; animation-delay: 2.5s; }
+.nf__flocon:nth-child(10) { left: 10%; top: -60px; font-size: 2.8rem !important; animation-duration: 18s; animation-delay: 5s; }
+.nf__flocon:nth-child(11) { left: 45%; top: -60px; font-size: 1.2rem !important; animation-duration: 9s;  animation-delay: 6s; }
+.nf__flocon:nth-child(12) { left: 95%; top: -60px; font-size: 2rem !important;  animation-duration: 15s; animation-delay: 3.5s; }
+
+@keyframes flocon-chute {
+  0%   { transform: translateY(0)     rotate(0deg);   opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 0.8; }
+  100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+}
+
+/* ── Carte centrale ────────────────────────────────────────────────────────── */
+
+.nf__carte {
+  position: relative;
+  z-index: 1;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 56px 48px 48px;
+  max-width: 560px;
+  width: 100%;
+  text-align: center;
+  box-shadow: var(--shadow-lg);
+}
+
+/* ── Icône principale ──────────────────────────────────────────────────────── */
+
+.nf__icone-wrap {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue), #0a5a8a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 32px;
+  box-shadow: 0 0 32px rgba(24, 144, 208, 0.4);
+}
+
+.nf__icone {
+  font-size: 2.4rem !important;
+  color: #fff;
+  animation: rotation 8s linear infinite;
+}
+
+@keyframes rotation {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ── Code 404 ─────────────────────────────────────────────────────────────── */
+
+.nf__code {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: 20px;
+  line-height: 1;
+}
+
+.nf__code-chiffre {
+  font-size: clamp(4rem, 12vw, 7rem);
+  font-weight: 900;
+  color: var(--bg-dark);
+  letter-spacing: -0.04em;
+}
+
+.nf__code-zero {
+  font-size: clamp(4rem, 12vw, 7rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  /* Zéro en bleu électrique pour évoquer la glace */
+  background: linear-gradient(135deg, var(--blue) 0%, #6ee7ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 12px rgba(24, 144, 208, 0.5));
+}
+
+/* ── Badge technique ─────────────────────────────────────────────────────── */
+
+.nf__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--orange);
+  background: rgba(232, 112, 32, 0.1);
+  border: 1px solid rgba(232, 112, 32, 0.25);
+  border-radius: 50px;
+  padding: 6px 14px;
+  margin-bottom: 20px;
+}
+
+.nf__badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--orange);
+  animation: pulse-dot 1.4s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.6); }
+}
+
+/* ── Titre & description ──────────────────────────────────────────────────── */
+
+.nf__titre {
+  font-size: clamp(1.4rem, 4vw, 1.9rem);
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 14px;
+}
+
+.nf__desc {
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+
+/* ── Jauge de pression ────────────────────────────────────────────────────── */
+
+.nf__jauge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin-bottom: 32px;
+}
+
+.nf__jauge-label {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.nf__jauge-bar {
+  flex: 1;
+  height: 6px;
+  background: var(--border);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.nf__jauge-fill {
+  /* Barre vide — panne simulée */
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(to right, var(--blue), #6ee7ff);
+  border-radius: 3px;
+  animation: jauge-remplissage 3s ease-out forwards;
+  animation-delay: 0.8s;
+}
+
+@keyframes jauge-remplissage {
+  0%   { width: 0%; }
+  60%  { width: 8%; }
+  80%  { width: 4%; }
+  100% { width: 2%; }
+}
+
+.nf__jauge-valeur {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--orange);
+  white-space: nowrap;
+}
+
+/* ── Boutons ──────────────────────────────────────────────────────────────── */
+
+.nf__ctas {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+
+@media (max-width: 520px) {
+  .nf__carte {
+    padding: 40px 24px 36px;
+  }
+
+  .nf__ctas {
+    flex-direction: column;
+  }
+
+  .nf__ctas .btn {
+    justify-content: center;
+  }
+
+  .nf__jauge {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}
