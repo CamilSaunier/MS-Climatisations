@@ -1,10 +1,10 @@
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
+import SEO from "../../components/SEO/SEO";
 import PhoneIcon from "@mui/icons-material/Phone";
 import EmailIcon from "@mui/icons-material/Email";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
-import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import "./ContactPage.css";
 
 const TEL = import.meta.env.VITE_TEL;
@@ -18,6 +18,11 @@ const INFOS = [
 function ContactPage() {
   return (
     <>
+      <SEO
+        title="Contact — Devis climatisation Vosges 88"
+        description="Contactez MS-Climatisation pour un devis gratuit ou une intervention d'urgence. Disponible lun–sam 8h–19h dans les Vosges (88) et Meurthe-et-Moselle (54)."
+        canonical="/contact"
+      />
       <Navbar />
       <main className="cp">
         {/* ── Bandeau ── */}

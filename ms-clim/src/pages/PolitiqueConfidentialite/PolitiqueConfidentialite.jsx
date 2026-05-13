@@ -1,10 +1,17 @@
 import PageLegal from "../../components/PageLegal/PageLegal";
+import SEO from "../../components/SEO/SEO";
 
 const MAIL = import.meta.env.VITE_MAIL;
 
 function PolitiqueConfidentialite() {
   return (
-    <PageLegal label="RGPD & Vie privée" titre="Politique de confidentialité">
+    <>
+      <SEO
+        title="Politique de confidentialité — MS-Climatisation"
+        description="Politique de confidentialité et protection des données de MS-Climatisation, artisan frigoriste à Charmes, Vosges (88)."
+        canonical="/politique-de-confidentialite"
+      />
+      <PageLegal label="RGPD & Vie privée" titre="Politique de confidentialité">
       <h2>Responsable du traitement</h2>
       <p>
         MS-Climatisation est responsable du traitement des données personnelles collectées via ce site.
@@ -102,6 +109,7 @@ function PolitiqueConfidentialite() {
         </p>
       </div>
     </PageLegal>
+    </>
   );
 }
 

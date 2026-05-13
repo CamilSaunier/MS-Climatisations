@@ -9,6 +9,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import BusinessIcon from "@mui/icons-material/Business";
 import PhoneIcon from "@mui/icons-material/Phone";
 import "./ServicesPage.css";
+import SEO from "../../components/SEO/SEO";
 
 const TEL = import.meta.env.VITE_TEL;
 
@@ -156,6 +157,11 @@ function MarqueCard({ m }) {
 function ServicesPage() {
   return (
     <>
+      <SEO
+        title="Services — Installation & Dépannage Climatisation Vosges 88"
+        description="Installation de climatisation (split, VRF, pompe à chaleur) et dépannage urgent pour particuliers et professionnels dans les Vosges (88) et Meurthe-et-Moselle (54)."
+        canonical="/services"
+      />
       <Navbar />
       <main className="sp">
         {/* ── Bandeau titre ── */}

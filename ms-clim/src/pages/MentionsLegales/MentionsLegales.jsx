@@ -1,4 +1,5 @@
 import PageLegal from "../../components/PageLegal/PageLegal";
+import SEO from "../../components/SEO/SEO";
 
 const TEL = import.meta.env.VITE_TEL;
 const MAIL = import.meta.env.VITE_MAIL;
@@ -8,7 +9,13 @@ const D = import.meta.env.VITE_DÉCENALE;
 
 function MentionsLegales() {
   return (
-    <PageLegal label="Informations légales" titre="Mentions légales">
+    <>
+      <SEO
+        title="Mentions légales — MS-Climatisation Charmes, Vosges 88"
+        description="Mentions légales de MS-Climatisation, artisan frigoriste à Charmes, Vosges (88130). SIRET, NAF, assurance et responsable de publication."
+        canonical="/mentions-legales"
+      />
+      <PageLegal label="Informations légales" titre="Mentions légales">
       <h2>Éditeur du site</h2>
       <p>Le présent site est édité par un artisan frigoriste exerçant en nom propre.</p>
       <ul>
@@ -80,6 +87,7 @@ function MentionsLegales() {
         </p>
       </div>
     </PageLegal>
+    </>
   );
 }
 
