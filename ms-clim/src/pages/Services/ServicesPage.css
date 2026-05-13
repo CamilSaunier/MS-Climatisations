@@ -1,0 +1,235 @@
+/* ── Page Services ───────────────────────────────────────────────────────── */
+
+.sp {
+  margin-top: var(--header-h);
+}
+
+/* ── Bandeau titre ────────────────────────────────────────────────────────── */
+
+.sp__hero {
+  background: var(--bg-dark);
+  padding: 56px 0 48px;
+}
+
+.sp__titre {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 800;
+  color: var(--text-light);
+  margin-top: 10px;
+}
+
+.sp__sous-titre {
+  font-size: 1.05rem;
+  color: var(--text-light-muted);
+  max-width: 560px;
+  margin-top: 14px;
+  line-height: 1.7;
+}
+
+/* ── Grille de cartes ─────────────────────────────────────────────────────── */
+
+.sp__grille {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+/* ── Carte service ────────────────────────────────────────────────────────── */
+
+.sp__carte {
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 36px 32px 28px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.sp__carte:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-3px);
+}
+
+/* Barre colorée en haut */
+.sp__carte-barre {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+}
+
+.sp__carte--orange .sp__carte-barre { background: var(--orange); }
+.sp__carte--blue   .sp__carte-barre { background: var(--blue); }
+
+/* Icône */
+.sp__carte-icone {
+  width: 58px;
+  height: 58px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 22px;
+}
+
+.sp__carte--orange .sp__carte-icone {
+  background: var(--orange-glow);
+  color: var(--orange);
+}
+
+.sp__carte--blue .sp__carte-icone {
+  background: var(--blue-glow);
+  color: var(--blue);
+}
+
+.sp__carte-icone svg {
+  font-size: 1.7rem !important;
+}
+
+/* Titre */
+.sp__carte-titre {
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+
+/* Description */
+.sp__carte-desc {
+  font-size: 0.97rem;
+  color: var(--text-muted);
+  line-height: 1.75;
+  margin-bottom: 26px;
+}
+
+/* Liste de prestations */
+.sp__carte-liste {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  margin-bottom: 28px;
+  flex: 1;
+}
+
+.sp__carte-liste li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.93rem;
+  color: var(--text);
+  line-height: 1.4;
+}
+
+.sp__carte--orange .sp__check { color: var(--orange); }
+.sp__carte--blue   .sp__check { color: var(--blue); }
+
+/* Badge public */
+.sp__carte-public {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.sp__carte-public span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sp__public-sep {
+  width: 1px;
+  height: 16px;
+  background: var(--border);
+}
+
+/* ── Marques ──────────────────────────────────────────────────────────────── */
+
+.sp__marques-header {
+  text-align: center;
+}
+
+.sp__marques {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+}
+
+.sp__marque {
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px 16px;
+  text-align: center;
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: var(--text);
+  box-shadow: var(--shadow);
+  transition: all 0.2s ease;
+  cursor: default;
+}
+
+.sp__marque:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ── CTA ──────────────────────────────────────────────────────────────────── */
+
+.sp__cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.sp__cta-btns {
+  display: flex;
+  gap: 14px;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+  .sp__cta {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .sp__cta-btns {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .sp__grille {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .sp__carte {
+    padding: 30px 22px 24px;
+  }
+
+  .sp__marques {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

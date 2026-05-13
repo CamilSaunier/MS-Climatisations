@@ -9,7 +9,7 @@ import AcUnitIcon from "@mui/icons-material/AcUnit";
 import "./Navbar.css";
 
 const LIENS = [
-  { label: "Services", href: "/#services" },
+  { label: "Services", href: "/services" },
   { label: "Zone", href: "/zone" },
   { label: "À propos", href: "/#about" },
   { label: "Contact", href: "/#contact" },

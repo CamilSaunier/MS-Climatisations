@@ -1,39 +1,69 @@
-import { useState, useRef } from "react";
-import { ComposableMap, Geographies, Geography } from "react-simple-maps";
+import { useState, useEffect } from "react";
+import { MapContainer, TileLayer, GeoJSON, Marker, Popup, useMap } from "react-leaflet";
+import L from "leaflet";
+import "leaflet/dist/leaflet.css";
+import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
+import markerIcon from "leaflet/dist/images/marker-icon.png";
+import markerShadow from "leaflet/dist/images/marker-shadow.png";
 import AcUnitIcon from "@mui/icons-material/AcUnit";
 import SearchIcon from "@mui/icons-material/Search";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import WarningAmberIcon from "@mui/icons-material/WarningAmber";
 import "./Zone.css";
 
+// Fix Leaflet's default marker icons broken by Vite's asset pipeline
+delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: markerIcon2x,
+  iconUrl: markerIcon,
+  shadowUrl: markerShadow,
+});
+
 const DEPTS = {
-  "54": { nom: "Meurthe-et-Moselle", couleur: "#1890d0", hover: "#0f7ab5" },
-  "88": { nom: "Vosges", couleur: "#e87020", hover: "#c85e10" },
+  "54": { nom: "Meurthe-et-Moselle", couleur: "#1890d0" },
+  "88": { nom: "Vosges", couleur: "#e87020" },
 };
 
-const GEO_URL = "/data/departements.geojson";
-
-const PROJ = { center: [2.5, 46.5], scale: 2700 };
-
-function fill(code) {
-  return DEPTS[code]?.couleur ?? "#dde5f0";
+function styleDept(feature) {
+  const code = feature.properties.code;
+  if (code === "54") return { fillColor: "#1890d0", fillOpacity: 0.3, color: "#ffffff", weight: 2 };
+  if (code === "88") return { fillColor: "#e87020", fillOpacity: 0.3, color: "#ffffff", weight: 2 };
+  return { fillColor: "#b8c9de", fillOpacity: 0.12, color: "#ffffff", weight: 0.5 };
 }
-function fillHover(code) {
-  return DEPTS[code]?.hover ?? "#c8d4e6";
+
+// Vole vers les coordonnées quand elles changent
+function FlyTo({ coords }) {
+  const map = useMap();
+  useEffect(() => {
+    if (coords) map.flyTo(coords, 16, { duration: 1.4 });
+  }, [coords, map]);
+  return null;
 }
 
 function Zone() {
+  const [geoData, setGeoData] = useState(null);
   const [adresse, setAdresse] = useState("");
   const [chargement, setChargement] = useState(false);
   const [resultat, setResultat] = useState(null);
-  const [tooltip, setTooltip] = useState(null);
-  const mapRef = useRef(null);
+  const [markerPos, setMarkerPos] = useState(null);
+
+  useEffect(() => {
+    fetch("/data/departements.geojson")
+      .then((r) => r.json())
+      .then((data) =>
+        setGeoData({
+          ...data,
+          features: data.features.filter((f) => parseInt(f.properties.code) <= 95),
+        })
+      );
+  }, []);
 
   async function verifier(e) {
     e.preventDefault();
     if (!adresse.trim()) return;
     setChargement(true);
     setResultat(null);
+    setMarkerPos(null);
     try {
       const res = await fetch(
         `https://api-adresse.data.gouv.fr/search/?q=${encodeURIComponent(adresse)}&limit=1`
@@ -43,24 +73,19 @@ function Zone() {
         setResultat({ type: "erreur", msg: "Adresse introuvable. Vérifiez votre saisie." });
         return;
       }
-      const props = json.features[0].properties;
-      const code = props.context?.split(",")[0]?.trim();
+      const feat = json.features[0];
+      const [lng, lat] = feat.geometry.coordinates;
+      const code = feat.properties.context?.split(",")[0]?.trim();
+      setMarkerPos([lat, lng]);
       if (DEPTS[code]) {
-        setResultat({ type: "ok", code, label: props.label });
+        setResultat({ type: "ok", code, label: feat.properties.label });
       } else {
-        setResultat({ type: "hors", label: props.label });
+        setResultat({ type: "hors", label: feat.properties.label });
       }
     } catch {
       setResultat({ type: "erreur", msg: "Connexion impossible. Réessayez." });
     } finally {
       setChargement(false);
-    }
-  }
-
-  function onMouseEnter(e, nom, code) {
-    const rect = mapRef.current?.getBoundingClientRect();
-    if (rect) {
-      setTooltip({ texte: `${nom} (${code})`, x: e.clientX - rect.left + 14, y: e.clientY - rect.top - 38 });
     }
   }
 
@@ -77,51 +102,32 @@ function Zone() {
         </div>
 
         <div className="zone__corps">
-          {/* ── Carte ── */}
-          <div className="zone__map-wrap" ref={mapRef}>
-            {tooltip && (
-              <div className="zone__tooltip" style={{ left: tooltip.x, top: tooltip.y }}>
-                {tooltip.texte}
-              </div>
-            )}
-            <ComposableMap
-              projection="geoMercator"
-              projectionConfig={PROJ}
-              style={{ width: "100%", height: "auto" }}
+          {/* ── Carte Leaflet ── */}
+          <div className="zone__map-wrap">
+            <MapContainer
+              center={[48.1, 6.3]}
+              zoom={8}
+              style={{ width: "100%", height: "100%" }}
+              scrollWheelZoom
             >
-              <Geographies geography={GEO_URL}>
-                {({ geographies }) =>
-                  geographies
-                    .filter((geo) => parseInt(geo.properties.code) <= 95)
-                    .map((geo) => {
-                      const { code, nom } = geo.properties;
-                      const couvert = !!DEPTS[code];
-                      return (
-                        <Geography
-                          key={geo.rsmKey}
-                          geography={geo}
-                          fill={fill(code)}
-                          stroke="#ffffff"
-                          strokeWidth={couvert ? 1.5 : 0.4}
-                          style={{
-                            default: { outline: "none" },
-                            hover: { fill: fillHover(code), outline: "none", cursor: "default" },
-                            pressed: { outline: "none" },
-                          }}
-                          onMouseEnter={(e) => onMouseEnter(e, nom, code)}
-                          onMouseLeave={() => setTooltip(null)}
-                          onMouseMove={(e) => onMouseEnter(e, nom, code)}
-                        />
-                      );
-                    })
-                }
-              </Geographies>
-            </ComposableMap>
+              <TileLayer
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+              />
+              {geoData && <GeoJSON data={geoData} style={styleDept} />}
+              {markerPos && (
+                <>
+                  <Marker position={markerPos}>
+                    <Popup>{resultat?.label}</Popup>
+                  </Marker>
+                  <FlyTo coords={markerPos} />
+                </>
+              )}
+            </MapContainer>
           </div>
 
           {/* ── Panneau latéral ── */}
           <div className="zone__panneau">
-            {/* Légende */}
             <div className="zone__bloc">
               <h3 className="zone__bloc-titre">Départements couverts</h3>
               {Object.entries(DEPTS).map(([code, { nom, couleur }]) => (
@@ -135,7 +141,6 @@ function Zone() {
               ))}
             </div>
 
-            {/* Recherche */}
             <div className="zone__bloc">
               <h3 className="zone__bloc-titre">
                 <AcUnitIcon fontSize="small" />
@@ -168,9 +173,7 @@ function Zone() {
                       <div>
                         <strong>Zone couverte !</strong>
                         <p>{resultat.label}</p>
-                        <p>
-                          {DEPTS[resultat.code].nom} ({resultat.code})
-                        </p>
+                        <p>{DEPTS[resultat.code].nom} ({resultat.code})</p>
                       </div>
                     </>
                   )}

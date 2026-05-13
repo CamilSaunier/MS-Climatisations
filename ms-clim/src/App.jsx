@@ -5,6 +5,7 @@ import Hero from "./components/Hero/Hero";
 import Footer from "./components/Footer/Footer";
 import NotFound from "./pages/NotFound/NotFound";
 import ZonePage from "./pages/Zone/ZonePage";
+import ServicesPage from "./pages/Services/ServicesPage";
 import MentionsLegales from "./pages/MentionsLegales/MentionsLegales";
 import PolitiqueConfidentialite from "./pages/PolitiqueConfidentialite/PolitiqueConfidentialite";
 
@@ -23,6 +24,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/services" element={<ServicesPage />} />
         <Route path="/zone" element={<ZonePage />} />
         <Route path="/mentions-legales" element={<MentionsLegales />} />
         <Route path="/politique-de-confidentialite" element={<PolitiqueConfidentialite />} />
