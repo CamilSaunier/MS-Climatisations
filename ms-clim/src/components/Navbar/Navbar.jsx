@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import PhoneIphoneIcon from "@mui/icons-material/PhoneIphone";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
@@ -8,10 +9,10 @@ import AcUnitIcon from "@mui/icons-material/AcUnit";
 import "./Navbar.css";
 
 const LIENS = [
-  { label: "Services", href: "#services" },
-  { label: "Zone", href: "#zone" },
-  { label: "À propos", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "Services", href: "/#services" },
+  { label: "Zone", href: "/#zone" },
+  { label: "À propos", href: "/#about" },
+  { label: "Contact", href: "/#contact" },
   // les marques dans à propos LG DAIKIN MITSUBISHI SAMSUNG ISENSE ATLANTIC/FUJITSU ALTECH
 ];
 
@@ -50,10 +51,10 @@ function Navbar() {
       {/* ── Barre principale bleu nuit ── */}
       <nav className="navbar">
         <div className="container navbar__inner">
-          <a href="#hero" className="navbar__logo">
+          <Link to="/" className="navbar__logo">
             <img src="/ms-logo.png" alt="MS Clim" />
             <span className="navbar__brand">MS-CLIMATISATION</span>
-          </a>
+          </Link>
 
           <ul className="navbar__liens">
             {LIENS.map((lien) => (
@@ -65,7 +66,7 @@ function Navbar() {
             ))}
           </ul>
 
-          <a href="#contact" className="btn btn-primary navbar__cta">
+          <a href="/#contact" className="btn btn-primary navbar__cta">
             Demander un devis
           </a>
 
@@ -81,7 +82,7 @@ function Navbar() {
                 {lien.label}
               </a>
             ))}
-            <a href="#contact" className="btn btn-primary" onClick={() => setMenuOuvert(false)}>
+            <a href="/#contact" className="btn btn-primary" onClick={() => setMenuOuvert(false)}>
               Demander un devis
             </a>
           </div>

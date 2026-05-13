@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
@@ -9,11 +10,11 @@ import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import "./Footer.css";
 
 const LIENS_NAV = [
-  { label: "Nos services", href: "#services" },
-  { label: "Zone d'intervention", href: "#zone" },
-  { label: "À propos", href: "#about" },
-  { label: "Avis clients", href: "#avis" },
-  { label: "Contact", href: "#contact" },
+  { label: "Nos services", href: "/#services" },
+  { label: "Zone d'intervention", href: "/#zone" },
+  { label: "À propos", href: "/#about" },
+  { label: "Avis clients", href: "/#avis" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 const SERVICES = ["Installation climatisation", "Entretien & maintenance", "Dépannage d'urgence", "Froid commercial", "Pompe à chaleur"];
@@ -32,10 +33,10 @@ function Footer() {
       <div className="container footer__grille">
         {/* ── Colonne 1 : Marque ── */}
         <div className="footer__col footer__col--marque">
-          <a href="#hero" className="footer__logo">
+          <Link to="/" className="footer__logo">
             <img src="/ms-logo.png" alt="MS Clim" />
             <span className="footer__brand">MS-CLIMATISATIONS</span>
-          </a>
+          </Link>
           <p className="footer__desc">
             Artisan frigoriste certifié intervenant dans les Vosges (88) et en Meurthe-et-Moselle (54). Particuliers & professionnels.
           </p>
@@ -110,12 +111,12 @@ function Footer() {
           </div>
 
           <span className="footer__mentions">
-            <a href="#" className="footer__lien">
+            <Link to="/mentions-legales" className="footer__lien">
               Mentions légales
-            </a>
-            <a href="#" className="footer__lien">
+            </Link>
+            <Link to="/politique-de-confidentialite" className="footer__lien">
               Politique de confidentialité
-            </a>
+            </Link>
           </span>
         </div>
       </div>

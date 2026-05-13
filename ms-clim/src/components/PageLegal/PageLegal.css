@@ -1,0 +1,92 @@
+/* ── Layout pages légales ────────────────────────────────────────────────── */
+
+.pl {
+  margin-top: var(--header-h);
+}
+
+/* Bandeau titre */
+.pl__hero {
+  background: var(--bg-dark);
+  padding: 56px 0 48px;
+}
+
+.pl__titre {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 800;
+  color: var(--text-light);
+  margin-top: 10px;
+}
+
+/* Contenu riche */
+.pl__contenu {
+  max-width: 760px;
+}
+
+.pl__contenu h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 40px 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--border);
+}
+
+.pl__contenu h2:first-child {
+  margin-top: 0;
+}
+
+.pl__contenu h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 20px 0 6px;
+}
+
+.pl__contenu p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.75;
+  margin-bottom: 12px;
+}
+
+.pl__contenu strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.pl__contenu ul {
+  list-style: disc;
+  padding-left: 20px;
+  margin-bottom: 12px;
+}
+
+.pl__contenu ul li {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.75;
+  margin-bottom: 4px;
+}
+
+.pl__contenu a {
+  color: var(--blue);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.pl__contenu a:hover {
+  color: var(--blue-hover);
+}
+
+/* Encadré info */
+.pl__encadre {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--blue);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  margin: 20px 0;
+}
+
+.pl__encadre p {
+  margin: 0;
+}
