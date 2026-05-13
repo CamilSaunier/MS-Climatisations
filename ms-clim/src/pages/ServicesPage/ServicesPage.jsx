@@ -1,5 +1,7 @@
+import { useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import BuildIcon from "@mui/icons-material/Build";
 import EngineeringIcon from "@mui/icons-material/Engineering";
 import CheckIcon from "@mui/icons-material/Check";
@@ -45,14 +47,111 @@ const SERVICES = [
 ];
 
 const MARQUES = [
-  { nom: "LG", logo: "/LG_LOGO.png" },
-  { nom: "Daikin", logo: "/DAIKIN_LOGO.png" },
-  { nom: "Mitsubishi Electric", logo: "/MITSUBISHI_ELECTRIC-LOGO.png" },
-  { nom: "Samsung", logo: "/SAMSUNG_LOGO.png" },
-  { nom: "Hisense", logo: "/HISENSE_LOGO.png" },
-  { nom: "Atlantic / Fujitsu", logo: "/ATLANTIC_FUJITSU_LOGO.png" },
-  { nom: "Altech", logo: "/ALTECH_LOGO.png" },
+  {
+    nom: "LG",
+    logo: "/LG_LOGO.png",
+    origine: "Corée du Sud",
+    desc: "Pionnier de la technologie Inverter, LG propose des climatiseurs résidentiels et commerciaux fiables et économes en énergie.",
+    gammes: ["Dual Inverter", "ARTCOOL", "Multi V (VRF)", "Cassette"],
+    atout: "Classe énergétique A+++, technologie Dual Cool",
+  },
+  {
+    nom: "Daikin",
+    logo: "/DAIKIN_LOGO.png",
+    origine: "Japon",
+    desc: "Leader mondial du génie climatique, Daikin est reconnu pour la longévité de ses équipements et la précision de sa régulation.",
+    gammes: ["Emura", "Stylish", "Perfera", "VRV IV (tertiaire)"],
+    atout: "Fluide R-32, système VRV pour les grandes surfaces",
+  },
+  {
+    nom: "Mitsubishi Electric",
+    logo: "/MITSUBISHI_ELECTRIC-LOGO.png",
+    origine: "Japon",
+    desc: "Référence en matière de confort et de silence, Mitsubishi Electric équipe aussi bien les logements que les bâtiments tertiaires.",
+    gammes: ["MSZ Kirigamine", "MSZ-HR", "City Multi (VRF)", "Mr. Slim"],
+    atout: "Ultra-silencieux, filtration Plasma Quad Connect",
+  },
+  {
+    nom: "Samsung",
+    logo: "/SAMSUNG_LOGO.png",
+    origine: "Corée du Sud",
+    desc: "Samsung allie design soigné et technologie Wind-Free pour un confort sans courant d'air direct.",
+    gammes: ["Wind-Free Comfort", "Wind-Free Elite", "DVM S2 (VRF)", "Cassette"],
+    atout: "Technologie Wind-Free, connectivité SmartThings",
+  },
+  {
+    nom: "Hisense",
+    logo: "/HISENSE_LOGO.png",
+    origine: "Chine",
+    desc: "Hisense offre un excellent rapport qualité/prix avec des équipements modernes et performants, idéaux pour les budgets maîtrisés.",
+    gammes: ["Hi-Comfort", "New Comfort", "Energy Pro+"],
+    atout: "Bon rapport qualité/prix, fluide R-32 écologique",
+  },
+  {
+    nom: "Atlantic / Fujitsu",
+    logo: "/ATLANTIC_FUJITSU_LOGO.png",
+    origine: "France / Japon",
+    desc: "Alliance entre le savoir-faire français d'Atlantic et la technologie japonaise de Fujitsu General pour des solutions performantes.",
+    gammes: ["Fujitsu Airstage (VRF)", "Atlantic Fujitsu résidentiel", "Gainable"],
+    atout: "Couverture complète du résidentiel au tertiaire",
+  },
+  {
+    nom: "Altech",
+    logo: "/ALTECH_LOGO.png",
+    origine: "France",
+    desc: "Spécialiste français des solutions de génie climatique, Altech propose des équipements adaptés aux exigences du marché européen.",
+    gammes: ["Climatisation gainable", "Systèmes VRF", "Traitement d'air"],
+    atout: "Support technique francophone, pièces disponibles en France",
+  },
+  {
+    nom: "Toshiba",
+    logo: "/TOSHIBA_LOGO.png",
+    origine: "Japon",
+    desc: "Toshiba Air Conditioning est reconnu pour ses systèmes VRF haut de gamme et ses unités résidentielles silencieuses et performantes.",
+    gammes: ["Haori", "Shorai Edge", "Super Digital Inverter (SDI)", "SMMS-i (VRF)"],
+    atout: "Technologie SDI ultra-silencieuse, VRF modulaire",
+  },
+  {
+    nom: "De Dietrich",
+    logo: "/DE_DIETRICH_LOGO.png",
+    origine: "France",
+    desc: "Marque française du groupe Atlantic, De Dietrich propose des solutions de chauffage et de climatisation alliant fiabilité et efficacité énergétique.",
+    gammes: ["Pompes à chaleur air/air", "Pompes à chaleur air/eau", "Gainable", "Cassette"],
+    atout: "Marque française, excellente couverture SAV nationale",
+  },
 ];
+
+function MarqueCard({ m }) {
+  const [ouvert, setOuvert] = useState(false);
+
+  return (
+    <div className={`sp__marque ${ouvert ? "sp__marque--ouvert" : ""}`}>
+      <button className="sp__marque-header" onClick={() => setOuvert(!ouvert)} aria-expanded={ouvert}>
+        <img src={m.logo} alt={m.nom} className="sp__marque-logo" />
+        <span className="sp__marque-nom">{m.nom}</span>
+        <ExpandMoreIcon className="sp__marque-chevron" fontSize="small" />
+      </button>
+
+      <div className="sp__marque-body">
+        <div className="sp__marque-contenu">
+          <span className="sp__marque-origine">{m.origine}</span>
+          <p className="sp__marque-desc">{m.desc}</p>
+          <div className="sp__marque-gammes">
+            <strong>Gammes installées :</strong>
+            <ul>
+              {m.gammes.map((g) => (
+                <li key={g}>{g}</li>
+              ))}
+            </ul>
+          </div>
+          <div className="sp__marque-atout">
+            <span>✦</span> {m.atout}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function ServicesPage() {
   return (
@@ -121,10 +220,7 @@ function ServicesPage() {
             </div>
             <div className="sp__marques">
               {MARQUES.map((m) => (
-                <div key={m.nom} className="sp__marque">
-                  <img src={m.logo} alt={m.nom} className="sp__marque-logo" />
-                  <span className="sp__marque-nom">{m.nom}</span>
-                </div>
+                <MarqueCard key={m.nom} m={m} />
               ))}
             </div>
           </div>
@@ -139,7 +235,7 @@ function ServicesPage() {
               <p className="section-subtitle">Devis gratuit, réponse rapide. Contactez-moi par téléphone ou via le formulaire.</p>
             </div>
             <div className="sp__cta-btns">
-              <a href="/#contact" className="btn btn-primary">
+              <a href="/contact" className="btn btn-primary">
                 Demander un devis
               </a>
               <a href={`tel:${TEL}`} className="btn btn-outline-light">

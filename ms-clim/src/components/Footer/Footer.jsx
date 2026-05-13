@@ -13,7 +13,6 @@ const LIENS_NAV = [
   { label: "Nos services", href: "/services" },
   { label: "Zone d'intervention", href: "/zone" },
   { label: "À propos", href: "/#about" },
-  { label: "Avis clients", href: "/#avis" },
   { label: "Contact", href: "/contact" },
 ];
 

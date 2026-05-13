@@ -53,7 +53,7 @@ function Navbar() {
         <div className="container navbar__inner">
           <Link to="/" className="navbar__logo">
             <img src="/ms-logo.png" alt="MS Clim" />
-            <span className="navbar__brand">MS-CLIMATISATION</span>
+            <span className="navbar__brand">MS-CLIMATISATIONS</span>
           </Link>
 
           <ul className="navbar__liens">

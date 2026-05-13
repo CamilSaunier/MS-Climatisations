@@ -176,51 +176,153 @@
 
 .sp__marques {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   gap: 16px;
+  align-items: start;
+}
+
+@media (max-width: 480px) {
+  .sp__marques {
+    grid-template-columns: 1fr;
+  }
 }
 
 .sp__marque {
   background: var(--bg-white);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 20px 16px 16px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.sp__marque--ouvert {
+  border-color: var(--blue);
+  box-shadow: var(--shadow-lg);
+}
+
+.sp__marque-header {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
-  box-shadow: var(--shadow);
-  transition: all 0.2s ease;
-  cursor: default;
+  gap: 10px;
+  padding: 20px 16px 14px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  font-family: var(--font);
 }
 
-.sp__marque:hover {
-  border-color: var(--blue);
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-lg);
+.sp__marque-chevron {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: var(--text-muted);
+  transition: transform 0.25s ease;
+}
+
+.sp__marque--ouvert .sp__marque-chevron {
+  transform: rotate(180deg);
+  color: var(--blue);
 }
 
 .sp__marque-logo {
   width: 100%;
-  height: 56px;
+  height: 52px;
   object-fit: contain;
   filter: grayscale(100%);
-  opacity: 0.7;
+  opacity: 0.65;
   transition: all 0.2s ease;
 }
 
-.sp__marque:hover .sp__marque-logo {
+.sp__marque-header:hover .sp__marque-logo,
+.sp__marque--ouvert .sp__marque-logo {
   filter: grayscale(0%);
   opacity: 1;
 }
 
 .sp__marque-nom {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.07em;
   color: var(--text-muted);
-  text-align: center;
   text-transform: uppercase;
+}
+
+/* Panneau dépliable via grid-template-rows */
+.sp__marque-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.28s ease;
+}
+
+.sp__marque--ouvert .sp__marque-body {
+  grid-template-rows: 1fr;
+}
+
+.sp__marque-contenu {
+  overflow: hidden;
+  padding: 0 16px;
+  transition: padding 0.28s ease;
+}
+
+.sp__marque--ouvert .sp__marque-contenu {
+  padding: 0 16px 18px;
+}
+
+.sp__marque-origine {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--blue);
+  background: var(--blue-glow);
+  border-radius: 4px;
+  padding: 2px 8px;
+  margin-bottom: 10px;
+}
+
+.sp__marque-desc {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.sp__marque-gammes strong {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.sp__marque-gammes ul {
+  list-style: disc;
+  padding-left: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-bottom: 12px;
+}
+
+.sp__marque-gammes li {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.sp__marque-atout {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--orange);
+  background: var(--orange-glow);
+  border-radius: var(--radius-sm);
+  padding: 7px 10px;
 }
 
 /* ── CTA ──────────────────────────────────────────────────────────────────── */
@@ -261,9 +363,5 @@
 @media (max-width: 480px) {
   .sp__carte {
     padding: 30px 22px 24px;
-  }
-
-  .sp__marques {
-    grid-template-columns: repeat(2, 1fr);
   }
 }
