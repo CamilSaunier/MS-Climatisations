@@ -186,3 +186,47 @@ ul {
   border-color: #fff;
   transform: translateY(-2px);
 }
+
+/* ── Animations ease-out ──────────────────────────────────────────────────── */
+
+@keyframes revealUp {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Bandeau titre de chaque page (ex: .sp__hero, .ap__hero, .cp__hero…) */
+[class$="__hero"] {
+  animation: revealUp 0.4s ease-out both;
+}
+
+/* Sections — cascade au montage de la page */
+.section {
+  animation: revealUp 0.5s ease-out both;
+  animation-delay: 0.06s;
+}
+
+.section + .section {
+  animation-delay: 0.16s;
+}
+
+.section + .section + .section {
+  animation-delay: 0.26s;
+}
+
+.section + .section + .section + .section {
+  animation-delay: 0.36s;
+}
+
+/* Respect des préférences système */
+@media (prefers-reduced-motion: reduce) {
+  [class$="__hero"],
+  .section {
+    animation: none;
+  }
+}

@@ -30,7 +30,7 @@ function ContactPage() {
           <div className="container">
             <span className="section-label">Parlons-en</span>
             <h1 className="cp__titre">Contact</h1>
-            <p className="cp__sous-titre">Devis gratuit, réponse rapide. Choisissez le moyen qui vous convient.</p>
+            <p className="cp__sous-titre">Devis gratuit, réponse rapide. Choisissez le moyen qui vous convient. Une urgence ? Appelez directement.</p>
           </div>
         </div>
 
