@@ -44,13 +44,13 @@ const SERVICES = [
 ];
 
 const MARQUES = [
-  "LG",
-  "DAIKIN",
-  "MITSUBISHI",
-  "SAMSUNG",
-  "ISENSE",
-  "ATLANTIC / FUJITSU",
-  "ALTECH",
+  { nom: "LG",                 logo: "/LG_LOGO.png" },
+  { nom: "Daikin",             logo: "/DAIKIN_LOGO.png" },
+  { nom: "Mitsubishi Electric", logo: "/MITSUBISHI_ELECTRIC-LOGO.png" },
+  { nom: "Samsung",            logo: "/SAMSUNG_LOGO.png" },
+  { nom: "Hisense",            logo: "/HISENSE_LOGO.png" },
+  { nom: "Atlantic / Fujitsu", logo: "/ATLANTIC_FUJITSU_LOGO.png" },
+  { nom: "Altech",             logo: "/ALTECH_LOGO.png" },
 ];
 
 function ServicesPage() {
@@ -121,8 +121,9 @@ function ServicesPage() {
             </div>
             <div className="sp__marques">
               {MARQUES.map((m) => (
-                <div key={m} className="sp__marque">
-                  {m}
+                <div key={m.nom} className="sp__marque">
+                  <img src={m.logo} alt={m.nom} className="sp__marque-logo" />
+                  <span className="sp__marque-nom">{m.nom}</span>
                 </div>
               ))}
             </div>
