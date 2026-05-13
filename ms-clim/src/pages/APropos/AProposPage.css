@@ -1,0 +1,307 @@
+/* ── Page À propos ─────────────────────────────────────────────────────────── */
+
+.ap {
+  margin-top: var(--header-h);
+}
+
+/* ── Bandeau titre ────────────────────────────────────────────────────────── */
+
+.ap__hero {
+  background: var(--bg-dark);
+  padding: 56px 0 48px;
+}
+
+.ap__titre {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 800;
+  color: var(--text-light);
+  margin-top: 10px;
+}
+
+.ap__sous-titre {
+  font-size: 1.05rem;
+  color: var(--text-light-muted);
+  max-width: 520px;
+  margin-top: 14px;
+  line-height: 1.7;
+}
+
+/* ── Intro ────────────────────────────────────────────────────────────────── */
+
+.ap__intro {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.ap__intro-visuel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  position: sticky;
+  top: calc(var(--header-h) + 32px);
+}
+
+.ap__avatar {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue-glow) 0%, rgba(24, 144, 208, 0.3) 100%);
+  border: 3px solid var(--blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--blue);
+}
+
+.ap__avatar svg {
+  font-size: 5rem !important;
+}
+
+.ap__siret {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.ap__siret-sep {
+  width: 1px;
+  height: 14px;
+  background: var(--border);
+  flex-shrink: 0;
+}
+
+.ap__intro-texte p {
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin-bottom: 18px;
+}
+
+.ap__intro-texte p strong {
+  color: var(--text);
+}
+
+/* Liste points forts */
+.ap__points {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 28px;
+  padding: 20px 20px;
+  background: var(--bg-alt);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.ap__points li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.93rem;
+  color: var(--text);
+  line-height: 1.4;
+}
+
+.ap__points li svg {
+  color: var(--blue);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ── En-têtes de sections centrés ─────────────────────────────────────────── */
+
+.ap__section-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* ── Garanties ────────────────────────────────────────────────────────────── */
+
+.ap__garanties {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.ap__garantie {
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px 28px;
+  box-shadow: var(--shadow);
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.ap__garantie:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-3px);
+}
+
+.ap__garantie-icone {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.ap__garantie--blue .ap__garantie-icone {
+  background: var(--blue-glow);
+  color: var(--blue);
+}
+
+.ap__garantie--orange .ap__garantie-icone {
+  background: var(--orange-glow);
+  color: var(--orange);
+}
+
+.ap__garantie-icone svg {
+  font-size: 1.6rem !important;
+}
+
+.ap__garantie-titre {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+
+.ap__garantie-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* ── Valeurs ──────────────────────────────────────────────────────────────── */
+
+.ap__valeurs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.ap__valeur {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 32px 24px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.ap__valeur-icone {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--blue-glow);
+  color: var(--blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.ap__valeur-icone svg {
+  font-size: 1.6rem !important;
+}
+
+.ap__valeur-label {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+
+.ap__valeur-desc {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+/* ── CTA ──────────────────────────────────────────────────────────────────── */
+
+.ap__cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.ap__cta-btns {
+  display: flex;
+  gap: 14px;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+
+@media (max-width: 1024px) {
+  .ap__intro {
+    grid-template-columns: 220px 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 900px) {
+  .ap__intro {
+    grid-template-columns: 1fr;
+  }
+
+  .ap__intro-visuel {
+    position: static;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+  .ap__garanties {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .ap__cta {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .ap__cta-btns {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .ap__garanties,
+  .ap__valeurs {
+    grid-template-columns: 1fr;
+  }
+
+  .ap__intro-visuel {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ap__avatar {
+    width: 140px;
+    height: 140px;
+  }
+}
