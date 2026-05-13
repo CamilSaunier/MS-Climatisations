@@ -1,0 +1,239 @@
+/* ── Page Contact ────────────────────────────────────────────────────────── */
+
+.cp {
+  margin-top: var(--header-h);
+}
+
+/* ── Bandeau ──────────────────────────────────────────────────────────────── */
+
+.cp__hero {
+  background: var(--bg-dark);
+  padding: 56px 0 48px;
+}
+
+.cp__titre {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 800;
+  color: var(--text-light);
+  margin-top: 10px;
+}
+
+.cp__sous-titre {
+  font-size: 1.05rem;
+  color: var(--text-light-muted);
+  max-width: 480px;
+  margin-top: 14px;
+  line-height: 1.7;
+}
+
+/* ── Layout ───────────────────────────────────────────────────────────────── */
+
+.cp__corps {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 48px;
+  align-items: center;
+}
+
+/* ── Cartes d'action ──────────────────────────────────────────────────────── */
+
+.cp__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cp__action {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 22px 24px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow);
+}
+
+.cp__action:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+.cp__action-icone {
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cp__action-icone svg {
+  font-size: 1.6rem !important;
+}
+
+.cp__action strong {
+  display: block;
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 3px;
+}
+
+.cp__action span {
+  font-size: 0.9rem;
+}
+
+/* Orange — Téléphone */
+.cp__action--orange {
+  background: #fff;
+  color: var(--text);
+}
+.cp__action--orange .cp__action-icone {
+  background: var(--orange-glow);
+  color: var(--orange);
+}
+.cp__action--orange:hover {
+  border-color: var(--orange);
+}
+.cp__action--orange span {
+  color: var(--text-muted);
+}
+
+/* Bleu — E-mail */
+.cp__action--blue {
+  background: #fff;
+  color: var(--text);
+}
+.cp__action--blue .cp__action-icone {
+  background: var(--blue-glow);
+  color: var(--blue);
+}
+.cp__action--blue:hover {
+  border-color: var(--blue);
+}
+.cp__action--blue span {
+  color: var(--text-muted);
+}
+
+/* Vert — WhatsApp */
+.cp__action--green {
+  background: #fff;
+  color: var(--text);
+}
+.cp__action--green .cp__action-icone {
+  background: rgba(37, 211, 102, 0.1);
+  color: #25d366;
+}
+.cp__action--green:hover {
+  border-color: #25d366;
+}
+.cp__action--green span {
+  color: var(--text-muted);
+}
+
+/* ── Infos pratiques ──────────────────────────────────────────────────────── */
+
+.cp__infos {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.cp__info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.cp__info-icone {
+  width: 38px;
+  height: 38px;
+  border-radius: 9px;
+  background: var(--blue-glow);
+  color: var(--blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cp__info-label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 3px;
+}
+
+.cp__info-valeur {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text);
+}
+
+/* ── Urgence ──────────────────────────────────────────────────────────────── */
+
+.cp__urgence {
+  display: flex;
+  gap: 14px;
+  background: rgba(232, 112, 32, 0.06);
+  border: 1px solid rgba(232, 112, 32, 0.25);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  margin-top: 20px;
+}
+
+.cp__urgence-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--orange);
+  flex-shrink: 0;
+  margin-top: 6px;
+  animation: cp-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes cp-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(0.65);
+  }
+}
+
+.cp__urgence strong {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.cp__urgence p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+
+.cp__urgence-btn {
+  gap: 8px;
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+
+@media (max-width: 860px) {
+  .cp__corps {
+    grid-template-columns: 1fr;
+  }
+}

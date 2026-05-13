@@ -34,6 +34,7 @@ const SERVICES = [
     desc: "Pose et mise en service de A à Z — du choix du matériel adapté à votre besoin jusqu'au paramétrage final.",
     items: [
       "Climatisation split mono et multi-splits",
+      "Systèmes VRV / VRF pour les grandes surfaces",
       "Pompe à chaleur air/air et air/eau",
       "Froid commercial (vitrines, chambres froides)",
       "Raccordements électrique et frigorifique",
@@ -44,13 +45,13 @@ const SERVICES = [
 ];
 
 const MARQUES = [
-  { nom: "LG",                 logo: "/LG_LOGO.png" },
-  { nom: "Daikin",             logo: "/DAIKIN_LOGO.png" },
+  { nom: "LG", logo: "/LG_LOGO.png" },
+  { nom: "Daikin", logo: "/DAIKIN_LOGO.png" },
   { nom: "Mitsubishi Electric", logo: "/MITSUBISHI_ELECTRIC-LOGO.png" },
-  { nom: "Samsung",            logo: "/SAMSUNG_LOGO.png" },
-  { nom: "Hisense",            logo: "/HISENSE_LOGO.png" },
+  { nom: "Samsung", logo: "/SAMSUNG_LOGO.png" },
+  { nom: "Hisense", logo: "/HISENSE_LOGO.png" },
   { nom: "Atlantic / Fujitsu", logo: "/ATLANTIC_FUJITSU_LOGO.png" },
-  { nom: "Altech",             logo: "/ALTECH_LOGO.png" },
+  { nom: "Altech", logo: "/ALTECH_LOGO.png" },
 ];
 
 function ServicesPage() {
@@ -64,8 +65,7 @@ function ServicesPage() {
             <span className="section-label">Ce que je fais</span>
             <h1 className="sp__titre">Nos services</h1>
             <p className="sp__sous-titre">
-              Dépannage et installation pour les particuliers et les professionnels —
-              dans les Vosges (88) et en Meurthe-et-Moselle (54).
+              Dépannage et installation pour les particuliers et les professionnels — dans les Vosges (88) et en Meurthe-et-Moselle (54).
             </p>
           </div>
         </div>
@@ -136,9 +136,7 @@ function ServicesPage() {
             <div className="sp__cta-texte">
               <span className="section-label">Prêt à intervenir</span>
               <h2 className="section-title">Besoin d'une intervention ?</h2>
-              <p className="section-subtitle">
-                Devis gratuit, réponse rapide. Contactez-moi par téléphone ou via le formulaire.
-              </p>
+              <p className="section-subtitle">Devis gratuit, réponse rapide. Contactez-moi par téléphone ou via le formulaire.</p>
             </div>
             <div className="sp__cta-btns">
               <a href="/#contact" className="btn btn-primary">

@@ -12,7 +12,7 @@ const LIENS = [
   { label: "Services", href: "/services" },
   { label: "Zone", href: "/zone" },
   { label: "À propos", href: "/#about" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Contact", href: "/contact" },
   // les marques dans à propos LG DAIKIN MITSUBISHI SAMSUNG ISENSE ATLANTIC/FUJITSU ALTECH
 ];
 
@@ -66,7 +66,7 @@ function Navbar() {
             ))}
           </ul>
 
-          <a href="/#contact" className="btn btn-primary navbar__cta">
+          <a href="/contact" className="btn btn-primary navbar__cta">
             Demander un devis
           </a>
 
@@ -82,7 +82,7 @@ function Navbar() {
                 {lien.label}
               </a>
             ))}
-            <a href="/#contact" className="btn btn-primary" onClick={() => setMenuOuvert(false)}>
+            <a href="/contact" className="btn btn-primary" onClick={() => setMenuOuvert(false)}>
               Demander un devis
             </a>
           </div>

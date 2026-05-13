@@ -14,7 +14,7 @@ const LIENS_NAV = [
   { label: "Zone d'intervention", href: "/zone" },
   { label: "À propos", href: "/#about" },
   { label: "Avis clients", href: "/#avis" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Contact", href: "/contact" },
 ];
 
 const SERVICES = ["Installation climatisation", "Entretien & maintenance", "Dépannage d'urgence", "Froid commercial", "Pompe à chaleur"];

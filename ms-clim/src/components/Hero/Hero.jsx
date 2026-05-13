@@ -24,10 +24,10 @@ function Hero() {
 
           {/* Boutons d'action */}
           <div className="hero__ctas">
-            <a href="#contact" className="btn btn-primary">
+            <a href="/contact" className="btn btn-primary">
               Demander un devis
             </a>
-            <a href="#services" className="btn btn-outline-light">
+            <a href="/services" className="btn btn-outline-light">
               Mes services
             </a>
           </div>
