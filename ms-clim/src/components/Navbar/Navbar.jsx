@@ -10,7 +10,7 @@ import "./Navbar.css";
 
 const LIENS = [
   { label: "Services", href: "/#services" },
-  { label: "Zone", href: "/#zone" },
+  { label: "Zone", href: "/zone" },
   { label: "À propos", href: "/#about" },
   { label: "Contact", href: "/#contact" },
   // les marques dans à propos LG DAIKIN MITSUBISHI SAMSUNG ISENSE ATLANTIC/FUJITSU ALTECH
