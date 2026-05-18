@@ -1,3 +1,4 @@
+import { useState, useEffect, useCallback } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import SEO from "../../components/SEO/SEO";
@@ -10,10 +11,27 @@ import StarIcon from "@mui/icons-material/Star";
 import PhoneIcon from "@mui/icons-material/Phone";
 import EngineeringIcon from "@mui/icons-material/Engineering";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import CloseIcon from "@mui/icons-material/Close";
 import "./AProposPage.css";
 
 const TEL = import.meta.env.VITE_TEL;
 const SIRET = import.meta.env.VITE_SIRET;
+
+const PHOTOS = [
+  "IMG_4164.jpeg",
+  "IMG_4166.jpeg",
+  "IMG_4599.jpeg",
+  "IMG_5025.jpeg",
+  "IMG_5042.jpeg",
+  "IMG_5046.jpeg",
+  "IMG_5368.jpeg",
+  "IMG_5369.jpeg",
+  "IMG_5370.jpeg",
+  "IMG_5372.jpeg",
+  "IMG_20241006_171051.jpg",
+];
 
 const GARANTIES = [
   {
@@ -63,6 +81,32 @@ const POINTS_FORTS = [
 ];
 
 function AProposPage() {
+  const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const [lightbox, setLightbox] = useState(null);
+
+  const prev = useCallback(() => setIndex((i) => (i - 1 + PHOTOS.length) % PHOTOS.length), []);
+  const next = useCallback(() => setIndex((i) => (i + 1) % PHOTOS.length), []);
+  const lbPrev = useCallback(() => setLightbox((i) => (i - 1 + PHOTOS.length) % PHOTOS.length), []);
+  const lbNext = useCallback(() => setLightbox((i) => (i + 1) % PHOTOS.length), []);
+
+  useEffect(() => {
+    if (paused) return;
+    const timer = setInterval(next, 4000);
+    return () => clearInterval(timer);
+  }, [paused, next]);
+
+  useEffect(() => {
+    if (lightbox === null) return;
+    const onKey = (e) => {
+      if (e.key === "Escape") setLightbox(null);
+      if (e.key === "ArrowLeft") lbPrev();
+      if (e.key === "ArrowRight") lbNext();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [lightbox, lbPrev, lbNext]);
+
   return (
     <>
       <SEO
@@ -170,6 +214,60 @@ function AProposPage() {
           </div>
         </section>
 
+        {/* ── Galerie photos ── */}
+        <section className="section section--alt">
+          <div className="container">
+            <div className="ap__section-header">
+              <span className="section-label">Sur le terrain</span>
+              <h2 className="section-title">Quelques réalisations</h2>
+              <p className="section-subtitle">
+                Installations, dépannages et chantiers réalisés dans les Vosges et en Meurthe-et-Moselle.
+              </p>
+            </div>
+            <div
+              className="ap__carousel"
+              onMouseEnter={() => setPaused(true)}
+              onMouseLeave={() => setPaused(false)}
+            >
+              <div
+                className="ap__carousel-track"
+                style={{ transform: `translateX(-${index * 100}%)` }}
+              >
+                {PHOTOS.map((img, i) => (
+                  <div key={img} className="ap__carousel-slide">
+                    <img className="ap__carousel-bg" src={`/${img}`} alt="" aria-hidden="true" />
+                    <img
+                      className="ap__carousel-img"
+                      src={`/${img}`}
+                      alt="Réalisation MS Clim"
+                      loading="lazy"
+                      onClick={() => setLightbox(i)}
+                    />
+                  </div>
+                ))}
+              </div>
+
+              <button className="ap__carousel-btn ap__carousel-btn--prev" onClick={prev} aria-label="Photo précédente">
+                <ArrowBackIosNewIcon fontSize="small" />
+              </button>
+              <button className="ap__carousel-btn ap__carousel-btn--next" onClick={next} aria-label="Photo suivante">
+                <ArrowForwardIosIcon fontSize="small" />
+              </button>
+
+              <div className="ap__carousel-dots">
+                {PHOTOS.map((_, i) => (
+                  <button
+                    key={i}
+                    className={`ap__carousel-dot${i === index ? " ap__carousel-dot--active" : ""}`}
+                    onClick={() => setIndex(i)}
+                    aria-label={`Photo ${i + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* ── CTA ── */}
         <section className="section section--dark">
           <div className="container ap__cta">
@@ -190,6 +288,26 @@ function AProposPage() {
           </div>
         </section>
       </main>
+      {lightbox !== null && (
+        <div className="ap__lightbox" onClick={() => setLightbox(null)}>
+          <button className="ap__lightbox-close" onClick={() => setLightbox(null)} aria-label="Fermer">
+            <CloseIcon />
+          </button>
+          <button className="ap__lightbox-btn ap__lightbox-btn--prev" onClick={(e) => { e.stopPropagation(); lbPrev(); }} aria-label="Photo précédente">
+            <ArrowBackIosNewIcon />
+          </button>
+          <img
+            src={`/${PHOTOS[lightbox]}`}
+            alt="Réalisation MS Clim"
+            className="ap__lightbox-img"
+            onClick={(e) => e.stopPropagation()}
+          />
+          <button className="ap__lightbox-btn ap__lightbox-btn--next" onClick={(e) => { e.stopPropagation(); lbNext(); }} aria-label="Photo suivante">
+            <ArrowForwardIosIcon />
+          </button>
+          <span className="ap__lightbox-counter">{lightbox + 1} / {PHOTOS.length}</span>
+        </div>
+      )}
       <Footer />
     </>
   );
