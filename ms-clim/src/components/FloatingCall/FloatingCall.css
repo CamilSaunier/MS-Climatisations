@@ -1,0 +1,98 @@
+/* ── Languette d'appel (mobile uniquement) ────────────────────────────────── */
+
+.floating-call {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .floating-call {
+    display: flex;
+    align-items: stretch;
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 900;
+    filter: drop-shadow(-3px 3px 10px rgba(0, 0, 0, 0.25));
+  }
+
+  /* ── Onglet toujours visible ── */
+  .floating-call__tab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    background: var(--orange);
+    color: #fff;
+    border: none;
+    border-radius: 12px 0 0 12px;
+    cursor: pointer;
+    padding: 18px 10px;
+    flex-shrink: 0;
+  }
+
+  .floating-call__tab svg {
+    font-size: 1.3rem !important;
+  }
+
+  /* ── Panel qui se déploie ── */
+  .floating-call__panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+    background: var(--orange);
+    color: #fff;
+    text-decoration: none;
+    padding: 14px 18px 14px 12px;
+    border-radius: 0;
+    overflow: hidden;
+    max-width: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition:
+      max-width 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+      opacity 0.25s ease,
+      padding 0.35s ease;
+    padding-left: 0;
+    padding-right: 0;
+    white-space: nowrap;
+  }
+
+  .floating-call--open .floating-call__panel {
+    max-width: 200px;
+    opacity: 1;
+    pointer-events: auto;
+    padding: 14px 18px 14px 12px;
+    border-radius: 0 12px 12px 0;
+  }
+
+  .floating-call__label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.85;
+  }
+
+  .floating-call__tel {
+    font-size: 1rem;
+    font-weight: 800;
+  }
+}
+
+@keyframes fc-ring {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  5% {
+    transform: rotate(-15deg);
+  }
+  10% {
+    transform: rotate(15deg);
+  }
+  15% {
+    transform: rotate(0deg);
+  }
+}

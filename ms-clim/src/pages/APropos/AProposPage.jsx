@@ -9,7 +9,6 @@ import HandshakeIcon from "@mui/icons-material/Handshake";
 import SpeedIcon from "@mui/icons-material/Speed";
 import StarIcon from "@mui/icons-material/Star";
 import PhoneIcon from "@mui/icons-material/Phone";
-import EngineeringIcon from "@mui/icons-material/Engineering";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
@@ -129,18 +128,7 @@ function AProposPage() {
 
         {/* ── Intro ── */}
         <section className="section section--white">
-          <div className="container ap__intro">
-            <div className="ap__intro-visuel">
-              <div className="ap__avatar">
-                <EngineeringIcon />
-              </div>
-              <div className="ap__siret">
-                <span>SIRET {SIRET}</span>
-                <span className="ap__siret-sep" />
-                <span>NAF 43.22B</span>
-              </div>
-            </div>
-
+          <div className="container">
             <div className="ap__intro-texte">
               <span className="section-label">Mon parcours</span>
               <h2 className="section-title">Un métier de terrain, une passion de précision</h2>

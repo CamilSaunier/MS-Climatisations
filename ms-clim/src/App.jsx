@@ -11,6 +11,7 @@ import ContactPage from "./pages/Contact/ContactPage";
 import MentionsLegales from "./pages/MentionsLegales/MentionsLegales";
 import PolitiqueConfidentialite from "./pages/PolitiqueConfidentialite/PolitiqueConfidentialite";
 import AProposPage from "./pages/APropos/AProposPage";
+import FloatingCall from "./components/FloatingCall/FloatingCall";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL || "https://ms-climatisations.fr";
 
@@ -101,6 +102,7 @@ function App() {
   return (
     <BrowserRouter>
       <AnimatedRoutes />
+      <FloatingCall />
     </BrowserRouter>
   );
 }
