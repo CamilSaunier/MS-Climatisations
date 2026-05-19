@@ -37,13 +37,50 @@ const EMPTY = { nom: "", telephone: "", email: "", type: "", message: "" };
 function ContactPage() {
   const [form, setForm] = useState(EMPTY);
   const [status, setStatus] = useState("idle"); // idle | sending | success | error
+  const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
-    setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
+    const { name, value } = e.target;
+    setForm((f) => ({ ...f, [name]: value }));
+    if (errors[name]) {
+      // si on corrige téléphone ou email, on efface les deux erreurs liées
+      if (name === "telephone" || name === "email") {
+        setErrors((err) => ({ ...err, telephone: undefined, email: undefined }));
+      } else {
+        setErrors((err) => ({ ...err, [name]: undefined }));
+      }
+    }
+  };
+
+  const validate = () => {
+    const e = {};
+    const rePhone = /^(?:(?:\+|00)33|0)[1-9](?:[\s.\-]?\d{2}){4}$/;
+    const reEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!form.nom.trim()) e.nom = "Veuillez indiquer votre nom.";
+    if (!form.type) e.type = "Veuillez choisir un type de demande.";
+
+    const hasTel = form.telephone.trim() !== "";
+    const hasEmail = form.email.trim() !== "";
+
+    if (!hasTel && !hasEmail) {
+      e.telephone = "Indiquez au moins un moyen de contact (téléphone ou e-mail).";
+      e.email = "Indiquez au moins un moyen de contact (téléphone ou e-mail).";
+    } else {
+      if (hasTel && !rePhone.test(form.telephone.trim()))
+        e.telephone = "Format invalide (ex : 06 12 34 56 78 ou +33 6 12 34 56 78).";
+      if (hasEmail && !reEmail.test(form.email.trim()))
+        e.email = "Format invalide (ex : jean@exemple.fr).";
+    }
+
+    if (!form.message.trim()) e.message = "Veuillez saisir votre message.";
+    return e;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const e2 = validate();
+    if (Object.keys(e2).length) { setErrors(e2); return; }
     setStatus("sending");
     try {
       await emailjs.send(
@@ -119,8 +156,9 @@ function ContactPage() {
                         placeholder="Jean Dupont"
                         value={form.nom}
                         onChange={handleChange}
-                        required
+                        aria-invalid={!!errors.nom}
                       />
+                      {errors.nom && <span className="cp__field-error">{errors.nom}</span>}
                     </div>
                     <div className="cp__field">
                       <label htmlFor="telephone">Téléphone *</label>
@@ -131,14 +169,15 @@ function ContactPage() {
                         placeholder="06 xx xx xx xx"
                         value={form.telephone}
                         onChange={handleChange}
-                        required
+                        aria-invalid={!!errors.telephone}
                       />
+                      {errors.telephone && <span className="cp__field-error">{errors.telephone}</span>}
                     </div>
                   </div>
 
                   <div className="cp__form-row">
                     <div className="cp__field">
-                      <label htmlFor="email">E-mail</label>
+                      <label htmlFor="email">E-mail *</label>
                       <input
                         id="email"
                         name="email"
@@ -146,16 +185,19 @@ function ContactPage() {
                         placeholder="jean@exemple.fr"
                         value={form.email}
                         onChange={handleChange}
+                        aria-invalid={!!errors.email}
                       />
+                      {errors.email && <span className="cp__field-error">{errors.email}</span>}
                     </div>
                     <div className="cp__field">
-                      <label htmlFor="type">Type de demande</label>
-                      <select id="type" name="type" value={form.type} onChange={handleChange}>
+                      <label htmlFor="type">Type de demande *</label>
+                      <select id="type" name="type" value={form.type} onChange={handleChange} aria-invalid={!!errors.type}>
                         <option value="">— Choisir —</option>
                         {TYPES.map((t) => (
                           <option key={t} value={t}>{t}</option>
                         ))}
                       </select>
+                      {errors.type && <span className="cp__field-error">{errors.type}</span>}
                     </div>
                   </div>
 
@@ -168,8 +210,9 @@ function ContactPage() {
                       placeholder="Décrivez votre besoin : type de logement, surface, problème rencontré…"
                       value={form.message}
                       onChange={handleChange}
-                      required
+                      aria-invalid={!!errors.message}
                     />
+                    {errors.message && <span className="cp__field-error">{errors.message}</span>}
                   </div>
 
                   {status === "error" && (

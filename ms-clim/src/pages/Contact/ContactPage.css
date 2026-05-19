@@ -100,6 +100,19 @@
   cursor: pointer;
 }
 
+.cp__field-error {
+  font-size: 0.8rem;
+  color: #d32f2f;
+  font-weight: 600;
+}
+
+.cp__field input[aria-invalid="true"],
+.cp__field select[aria-invalid="true"],
+.cp__field textarea[aria-invalid="true"] {
+  border-color: #d32f2f;
+  box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.12);
+}
+
 .cp__submit {
   gap: 8px;
   align-self: flex-start;
