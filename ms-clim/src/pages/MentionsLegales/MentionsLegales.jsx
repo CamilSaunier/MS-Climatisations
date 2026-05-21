@@ -5,7 +5,7 @@ const TEL = import.meta.env.VITE_TEL;
 const MAIL = import.meta.env.VITE_MAIL;
 const SIRET = import.meta.env.VITE_SIRET;
 const NAF = import.meta.env.VITE_CODE_NAF;
-const D = import.meta.env.VITE_DÉCENALE;
+const D = import.meta.env.VITE_DECENALE;
 
 function MentionsLegales() {
   return (

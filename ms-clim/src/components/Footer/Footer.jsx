@@ -22,7 +22,7 @@ const TEL = import.meta.env.VITE_TEL;
 const MAIL = import.meta.env.VITE_MAIL;
 const SIRET = import.meta.env.VITE_SIRET;
 const NAF = import.meta.env.VITE_CODE_NAF;
-const DÉCENALE = import.meta.env.VITE_DÉCENALE;
+const DECENALE = import.meta.env.VITE_DECENALE;
 
 function Footer() {
   const annee = new Date().getFullYear();
@@ -106,7 +106,7 @@ function Footer() {
             <span className="footer__legal-sep" />
             <span>NAF {NAF}</span>
             <span className="footer__legal-sep" />
-            <span>{DÉCENALE}</span>
+            <span>{DECENALE}</span>
           </div>
 
           <span className="footer__mentions">
