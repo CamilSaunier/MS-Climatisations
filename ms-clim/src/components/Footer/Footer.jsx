@@ -22,7 +22,7 @@ const TEL = import.meta.env.VITE_TEL;
 const MAIL = import.meta.env.VITE_MAIL;
 const SIRET = import.meta.env.VITE_SIRET;
 const NAF = import.meta.env.VITE_CODE_NAF;
-const DECENALE = import.meta.env.VITE_DECENALE;
+const DECENALE = "Responsabilité civile décenale des entreprises de construction RCDA-278519527";
 
 function Footer() {
   const annee = new Date().getFullYear();
