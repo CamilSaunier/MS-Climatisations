@@ -9,7 +9,7 @@ function ZonePage() {
     <>
       <SEO
         title="Zone d'intervention — Vosges 88 & Meurthe-et-Moselle 54"
-        description="MS-Climatisation intervient à Charmes, Épinal, Remiremont (Vosges 88) et Nancy, Lunéville, Toul (Meurthe-et-Moselle 54). Entrez votre adresse pour vérifier la couverture."
+        description="MS-Climatisations intervient à Charmes, Épinal, Remiremont (Vosges 88) et Nancy, Lunéville, Toul (Meurthe-et-Moselle 54). Entrez votre adresse pour vérifier la couverture."
         canonical="/zone"
       />
       <Navbar />

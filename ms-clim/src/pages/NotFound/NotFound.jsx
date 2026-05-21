@@ -11,7 +11,7 @@ function NotFound() {
     <>
       <SEO
         title="Page introuvable — 404"
-        description="Cette page n'existe pas. Revenez à l'accueil de MS-Climatisation, frigoriste Vosges 88."
+        description="Cette page n'existe pas. Revenez à l'accueil de MS-Climatisations, frigoriste Vosges 88."
         noindex
       />
       <div className="nf">

@@ -98,7 +98,7 @@ function Footer() {
       {/* ── Barre du bas ── */}
       <div className="footer__bas">
         <div className="container footer__bas-inner">
-          <span>© {annee} MS-Climatisation — Tous droits réservés</span>
+          <span>© {annee} MS-Climatisations — Tous droits réservés</span>
 
           {/* Mentions légales obligatoires */}
           <div className="footer__legal">

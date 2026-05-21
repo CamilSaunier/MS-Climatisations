@@ -19,7 +19,7 @@ const LOCAL_BUSINESS = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "@id": `${BASE_URL}/#business`,
-  name: "MS-Climatisation",
+  name: "MS-Climatisations",
   description:
     "Artisan frigoriste certifié à Charmes (88130). Installation, dépannage et entretien de climatisation dans les Vosges (88) et la Meurthe-et-Moselle (54).",
   url: BASE_URL,
@@ -69,7 +69,7 @@ function HomePage() {
     <>
       <SEO
         title="Climatisation Charmes & Épinal — Frigoriste Vosges 88"
-        description="MS-Climatisation, artisan frigoriste certifié à Charmes (88130). Installation et dépannage climatisation dans les Vosges (88) et Meurthe-et-Moselle (54). LG, Daikin, Mitsubishi, Samsung. Devis gratuit."
+        description="MS-Climatisations, artisan frigoriste certifié à Charmes (88130). Installation et dépannage climatisation dans les Vosges (88) et Meurthe-et-Moselle (54). LG, Daikin, Mitsubishi, Samsung. Devis gratuit."
         canonical="/"
         schema={LOCAL_BUSINESS}
       />

@@ -106,7 +106,7 @@ function ContactPage() {
     <>
       <SEO
         title="Contact — Devis climatisation Vosges 88"
-        description="Contactez MS-Climatisation pour un devis gratuit ou une intervention d'urgence. Disponible lun–sam 8h–19h dans les Vosges (88) et Meurthe-et-Moselle (54)."
+        description="Contactez MS-Climatisations pour un devis gratuit ou une intervention d'urgence. Disponible lun–sam 8h–19h dans les Vosges (88) et Meurthe-et-Moselle (54)."
         canonical="/contact"
       />
       <Navbar />

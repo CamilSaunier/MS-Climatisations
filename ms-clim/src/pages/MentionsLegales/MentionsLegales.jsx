@@ -11,8 +11,8 @@ function MentionsLegales() {
   return (
     <>
       <SEO
-        title="Mentions légales — MS-Climatisation Charmes, Vosges 88"
-        description="Mentions légales de MS-Climatisation, artisan frigoriste à Charmes, Vosges (88130). SIRET, NAF, assurance et responsable de publication."
+        title="Mentions légales — MS-Climatisations Charmes, Vosges 88"
+        description="Mentions légales de MS-Climatisations, artisan frigoriste à Charmes, Vosges (88130). SIRET, NAF, assurance et responsable de publication."
         canonical="/mentions-legales"
       />
       <PageLegal label="Informations légales" titre="Mentions légales">
@@ -20,7 +20,7 @@ function MentionsLegales() {
       <p>Le présent site est édité par un artisan frigoriste exerçant en nom propre.</p>
       <ul>
         <li>
-          <strong>Raison sociale :</strong> MS-Climatisation
+          <strong>Raison sociale :</strong> MS-Climatisations
         </li>
         <li>
           <strong>SIRET :</strong> {SIRET || "En cours d'enregistrement"}
@@ -46,7 +46,7 @@ function MentionsLegales() {
       </ul>
 
       <h2>Directeur de la publication</h2>
-      <p>Le directeur de la publication est le gérant de MS-Climatisation, joignable à l'adresse e-mail indiquée ci-dessus.</p>
+      <p>Le directeur de la publication est le gérant de MS-Climatisations, joignable à l'adresse e-mail indiquée ci-dessus.</p>
 
       <h2>Hébergement</h2>
       <p>
@@ -56,7 +56,7 @@ function MentionsLegales() {
 
       <h2>Propriété intellectuelle</h2>
       <p>
-        L'ensemble des contenus présents sur ce site (textes, images, graphismes, logo, icônes…) est la propriété exclusive de MS-Climatisation ou de
+        L'ensemble des contenus présents sur ce site (textes, images, graphismes, logo, icônes…) est la propriété exclusive de MS-Climatisations ou de
         ses partenaires, et est protégé par les lois françaises et internationales relatives à la propriété intellectuelle.
       </p>
       <p>
@@ -66,14 +66,14 @@ function MentionsLegales() {
 
       <h2>Responsabilité</h2>
       <p>
-        MS-Climatisation s'efforce d'assurer l'exactitude et la mise à jour des informations diffusées sur ce site. Toutefois, nous ne pouvons
+        MS-Climatisations s'efforce d'assurer l'exactitude et la mise à jour des informations diffusées sur ce site. Toutefois, nous ne pouvons
         garantir l'exactitude, la précision ou l'exhaustivité des informations mises à disposition, et déclinons toute responsabilité pour toute
         imprécision, inexactitude ou omission.
       </p>
 
       <h2>Liens hypertextes</h2>
       <p>
-        Ce site peut contenir des liens vers des sites tiers. MS-Climatisation n'exerce aucun contrôle sur ces sites et décline toute responsabilité
+        Ce site peut contenir des liens vers des sites tiers. MS-Climatisations n'exerce aucun contrôle sur ces sites et décline toute responsabilité
         quant à leur contenu.
       </p>
 
