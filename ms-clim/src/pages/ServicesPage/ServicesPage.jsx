@@ -188,6 +188,18 @@ function ServicesPage() {
                   <h2 className="sp__carte-titre">{s.titre}</h2>
                   <p className="sp__carte-desc">{s.desc}</p>
 
+                  {s.id === "depannage" && (
+                    <p className="sp__carte-detail">
+                      Votre clim ne refroidit plus, fait du bruit ou affiche un code erreur ? J'interviens rapidement sur l'ensemble des Vosges (88) et en Meurthe-et-Moselle (54). Recharge de gaz frigorigène, remplacement de composants, entretien annuel — je diagnostique et répare tous types de climatiseurs : split, multi-splits, cassette ou gainable.
+                    </p>
+                  )}
+
+                  {s.id === "installation" && (
+                    <p className="sp__carte-detail">
+                      Vous souhaitez installer une climatisation ou une pompe à chaleur ? Je vous accompagne du choix du matériel jusqu'à la mise en service, en tenant compte de la superficie, de l'exposition et de votre budget. J'interviens chez les particuliers comme les professionnels dans les Vosges (88) et en Meurthe-et-Moselle (54).
+                    </p>
+                  )}
+
                   <ul className="sp__carte-liste">
                     {s.items.map((item) => (
                       <li key={item}>
