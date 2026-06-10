@@ -120,6 +120,14 @@ const MARQUES = [
     gammes: ["Pompes à chaleur air/air", "Pompes à chaleur air/eau", "Gainable", "Cassette"],
     atout: "Marque française, excellente couverture SAV nationale",
   },
+  {
+    nom: "TCL",
+    logo: "/TCL_LOGO.png",
+    origine: "Chine",
+    desc: "Acteur mondial de l'électronique, TCL propose des climatiseurs modernes au excellent rapport qualité/prix, dotés des dernières technologies Inverter.",
+    gammes: ["Elite", "Ocarina", "FreshIN", "Multi-split"],
+    atout: "Technologie Inverter, fluide R-32, prix maîtrisé",
+  },
 ];
 
 function MarqueCard({ m }) {
